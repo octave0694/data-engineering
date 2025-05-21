@@ -83,3 +83,29 @@ databricks bundle run test_sql_sql_job
 ```shell
 databricks bundle destroy
 ```
+
+#### Databricks clusters group command
+Show clusters command help
+```shell
+databricks clusters -h
+```
+
+List available clusters
+```shell
+databricks clusters list
+```
+
+Start clusters
+```shell
+databricks clusters start 0430-115215-tj6mdung
+```
+
+#### Databricks fs group command
+Show fs command help
+```shell
+databricks fs -h
+```
+
+```shell
+databricks fs ls dbfs:/
+```
