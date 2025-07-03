@@ -93,10 +93,10 @@ These are some useful relevant spark configuration properties.
 [Optimize spark data workloads](https://www.databricks.com/discover/pages/optimize-data-workloads-guide)
 
 `predicate pushdown`  
-`set spark.sql.autoBroadcastJoinThreshold = <size in bytes>`
-`set spark.databricks.adaptive.autoBroadcastJoinThreshold = <size in bytes>`
-`set spark.sql.join.preferSortMergeJoin = true`
-`set spark.sql.cbo.enabled = true`
+`set spark.sql.autoBroadcastJoinThreshold = <size in bytes>`  
+`set spark.databricks.adaptive.autoBroadcastJoinThreshold = <size in bytes>`  
+`set spark.sql.join.preferSortMergeJoin = true`  
+`set spark.sql.cbo.enabled = true`  
 `set spark.sql.shuffle.partitions=auto` : data spill and suffle partitions
 
 ```text
