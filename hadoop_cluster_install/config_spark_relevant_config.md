@@ -86,155 +86,33 @@ These are some useful relevant spark configuration properties.
 `spark.dynamicAllocation.initialExecutors`  
 `spark.dynamicAllocation.minExecutors`  
 `spark.dynamicAllocation.maxExecutors`  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
-``  
+``
+``  
+
+#### Spark workload optimization
+[Optimize spark data workloads](https://www.databricks.com/discover/pages/optimize-data-workloads-guide)
+
+`predicate pushdown`  
+`set spark.sql.autoBroadcastJoinThreshold = <size in bytes>`
+`set spark.databricks.adaptive.autoBroadcastJoinThreshold = <size in bytes>`
+`set spark.sql.join.preferSortMergeJoin = true`
+`set spark.sql.cbo.enabled = true`
+`set spark.sql.shuffle.partitions=auto` : data spill and suffle partitions
+
+```text
+-- in SQL
+set spark.sql.shuffle.partitions = 2*<number of total worker cores in cluster>
+-- in PySpark
+spark.conf.set(“spark.sql.shuffle.partitions”, 2*<number of total worker cores in cluster>)
+-- or
+spark.conf.set(“spark.sql.shuffle.partitions”, 2*sc.defaultParallelism)
+```
+`set spark.sql.adaptive.skewJoin.enabled = true` : data skew
+```text
+-- default is 5
+set spark.sql.adaptive.skewJoin.skewedPartitionFactor = <value>
+-- default is 256MB
+set spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes = <size in bytes>
+```
+
+`set spark.sql.files.maxPartitionBytes = <size in bytes>`
